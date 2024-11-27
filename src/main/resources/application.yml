@@ -1,0 +1,26 @@
+application:
+  env: ${APPLICATION_ENV}
+  name: '@pom.artifactId@'
+  description: '@pom.description@'
+  version: '@pom.version@'
+
+server:
+  port: 8080
+  shutdown: graceful
+
+management:
+  endpoint:
+    health:
+      show-details: always
+      group:
+        readiness:
+          include: readinessState
+  health:
+    probes:
+      enabled: true
+
+spring:
+  jackson:
+    default-property-inclusion: non_null
+    deserialization:
+      adjust-dates-to-context-time-zone: false
